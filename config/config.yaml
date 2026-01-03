@@ -1,0 +1,51 @@
+# NER Wolof Training Configuration
+
+# Model settings
+model:
+  # GLiNER model for NER
+  name: "urchade/gliner_multi_pii-v1"
+  max_length: 256
+
+# Data settings - Using MasakhaNER from Hugging Face
+data:
+  # MasakhaNER dataset configuration
+  dataset_name: "masakhaner"
+  language: "wol"  # Wolof language code
+  # Available languages: amh, hau, ibo, kin, lug, luo, pcm, swa, wol, yor
+  
+  # Labels are automatically loaded from the dataset
+  # MasakhaNER labels: O, B-PER, I-PER, B-ORG, I-ORG, B-LOC, I-LOC, B-DATE, I-DATE
+
+# Training hyperparameters (optimized for GLiNER)
+training:
+  output_dir: "outputs/ner-wolof"
+  num_epochs: 10
+  batch_size: 8
+  
+  # GLiNER-specific learning rates
+  learning_rate: 5.0e-6        # Lower LR for GLiNER encoder
+  others_lr: 1.0e-5            # LR for other parameters
+  weight_decay: 0.01
+  others_weight_decay: 0.01
+  
+  # Scheduler
+  lr_scheduler_type: "linear"
+  warmup_ratio: 0.1
+  
+  # Evaluation and saving (GLiNER uses eval_strategy not evaluation_strategy)
+  eval_strategy: "steps"
+  eval_steps: 100
+  save_steps: 200
+  save_total_limit: 3
+  
+  # Focal loss settings (helps with class imbalance)
+  focal_loss_alpha: 0.75
+  focal_loss_gamma: 2
+  
+  # Logging
+  logging_dir: "outputs/logs"
+  logging_steps: 50
+  
+  # Data loading
+  num_workers: 0
+  use_cpu: false
