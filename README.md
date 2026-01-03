@@ -44,6 +44,11 @@ Dakar => LOC (score: 0.97)
 
 This project uses the [MasakhaNER](https://huggingface.co/datasets/masakhaner) dataset, which provides high-quality NER annotations for 10 African languages including Wolof (`wol`).
 
+**Dataset Split:**
+- **Train**: 1,871 samples
+- **Validation**: 267 samples
+- **Test**: 539 samples
+
 **Entity Types:**
 - **PER** - Person names
 - **ORG** - Organizations
@@ -52,7 +57,9 @@ This project uses the [MasakhaNER](https://huggingface.co/datasets/masakhaner) d
 
 ## 📈 Evaluation Results
 
-Evaluation on the test set (539 samples):
+Evaluation on the test set:
+- **539** sentences/examples
+- **505** total annotated entities across these sentences
 
 | Entity Type | Precision | Recall | F1-Score | Support |
 |-------------|-----------|--------|----------|---------|
