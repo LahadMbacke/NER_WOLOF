@@ -50,6 +50,29 @@ This project uses the [MasakhaNER](https://huggingface.co/datasets/masakhaner) d
 - **LOC** - Locations
 - **DATE** - Dates
 
+## 📈 Evaluation Results
+
+Evaluation on the test set (539 samples):
+
+| Entity Type | Precision | Recall | F1-Score | Support |
+|-------------|-----------|--------|----------|---------|
+| **DATE**    | 30.77%    | 22.86% | 26.23%   | 70      |
+| **LOC**     | 76.75%    | 84.95% | 80.65%   | 206     |
+| **ORG**     | 41.89%    | 56.36% | 48.06%   | 55      |
+| **PER**     | 53.02%    | 70.69% | 60.59%   | 174     |
+| **GLOBAL**  | **58.87%**| **68.32%** | **63.24%** | 505 |
+
+### ⚠️ Performance Note
+
+The model was fine-tuned on a relatively limited dataset (MasakhaNER Wolof). Current performance reflects this constraint, particularly for **DATE** and **ORG** entity types which have fewer training examples.
+
+**Future Improvements:**
+- Collect and annotate more data in Wolof
+- Increase source diversity (newspapers, social media, literature)
+- Experiment with data augmentation techniques
+
+With more annotated data, we expect to significantly improve the model's performance.
+
 
 ## 🚀 Quick Start
 
